@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         //find views by Ids
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         final EditText input = (EditText) findViewById(R.id.input);
