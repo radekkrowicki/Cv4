@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "890803643131",
+    "firebase_url": "https://cv4projekt.firebaseio.com",
+    "project_id": "cv4projekt",
+    "storage_bucket": "cv4projekt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890803643131:android:71371a4ce517cadc",
+        "android_client_info": {
+          "package_name": "com.radko.cv4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890803643131-ptag00422bh43le4pimk0suqibf5l82h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.radko.cv4",
+            "certificate_hash": "e96bfb95e39c99bb5b6ebed4c1a3b81f2172fffd"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC72mOL9pKWu9FisbubaTOrrW5lxva19V8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890803643131-mi0vau5i8edhfasau4ifa9t0457i8i60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
