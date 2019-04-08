@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
+    //Sign in request code musi być po byle jakim int'em żeby działało
     private static final int SIGN_IN_REQUEST_CODE = 111;
     private FirebaseListAdapter<ChatMessage> adapter;
     private ListView listView;
@@ -35,21 +36,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //find views by Ids
+        //sprawdza przez ID czy zalogowany jest użytkownik czy trzeba założyć konto
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         final EditText input = (EditText) findViewById(R.id.input);
         listView = (ListView) findViewById(R.id.list);
 
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            // Start sign in/sign up activity
+            // nie zalogowany więc prosi o firebaseauth
             startActivityForResult(AuthUI.getInstance()
                     .createSignInIntentBuilder()
                     .build(), SIGN_IN_REQUEST_CODE);
         } else {
-            // User is already signed in, show list of messages
+            // user zalogowany więc funkcja pokazania wiadomości
             showAllOldMessages();
         }
-
+        //floating action button korzystając z edittext'a wysyła do ChatMessage wiadomości podpisując je jako user userid i text
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+        //funkcja wylogowania, po czym zamyka apke
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_sign_out) {
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
+        // sprawdzenie przy logowaniu czy wróci sign in request code
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -101,12 +102,12 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Sign in failed, please try again later", Toast.LENGTH_LONG).show();
 
-                // Close the app
+                // jeżeli nie wróci potwierdzenie pozytywne zamyka aplikacje
                 finish();
             }
         }
     }
-
+    //funkcja pokazania wcześniejszych wiadomości
     private void showAllOldMessages() {
         loggedInUserName = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Log.d("Main", "user id: " + loggedInUserName);

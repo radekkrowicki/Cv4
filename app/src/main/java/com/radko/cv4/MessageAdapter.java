@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
-
+//zformatowanie danych pod firebaselistadaptera co poźniej ułatwia pokazać stare wiadomości w funkcji show all old messages
 public class MessageAdapter extends FirebaseListAdapter<ChatMessage> {
 
     private MainActivity activity;
@@ -26,7 +26,7 @@ public class MessageAdapter extends FirebaseListAdapter<ChatMessage> {
         messageText.setText(model.getMessageText());
         messageUser.setText(model.getMessageUser());
 
-        // Format the date before showing it
+        // formatowanie Daty
         messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", model.getMessageTime()));
     }
 
@@ -37,23 +37,19 @@ public class MessageAdapter extends FirebaseListAdapter<ChatMessage> {
             view = activity.getLayoutInflater().inflate(R.layout.item_out_message, viewGroup, false);
         else
             view = activity.getLayoutInflater().inflate(R.layout.item_in_message, viewGroup, false);
-
-        //generating view
         populateView(view, chatMessage, position);
 
         return view;
     }
-
+    // musi być ustawione 2  ponieważ jeden viewtype to odebrane a drugie to wysłane
     @Override
     public int getViewTypeCount() {
-        // return the total number of view types. this value should never change
-        // at runtime
+
         return 2;
     }
 
     @Override
     public int getItemViewType(int position) {
-        // return a value between 0 and (getViewTypeCount - 1)
         return position % 2;
     }
 }

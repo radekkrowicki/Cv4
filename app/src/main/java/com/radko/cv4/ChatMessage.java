@@ -7,7 +7,7 @@ public class ChatMessage {
     private String messageUser;
     private String messageUserId;
     private long messageTime;
-
+        // model w jaki sposób ma zapisywać database wiadomości czyli text, user i userID
     public ChatMessage(String messageText, String messageUser, String messageUserId) {
         this.messageText = messageText;
         this.messageUser = messageUser;
